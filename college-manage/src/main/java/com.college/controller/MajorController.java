@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/major")
@@ -91,17 +93,11 @@ public class MajorController {
 
     @ResponseBody
     @RequestMapping("/delete")
-    public RespBean delete(@RequestParam("mid") Integer mid){
-        try {
-            if(majorService.delete(mid)){
-                return RespBean.ok("添加成功");
-            }else {
-                return RespBean.error("添加失败");
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-            return RespBean.error("添加失败");
-        }
+    public Object delete(@RequestParam("mid") Integer mid) {
+        boolean i = majorService.delete(mid);
+        Map<String, Object> map = new HashMap<>();
+        map.put("success", i);
+        return map;
     }
 
 }

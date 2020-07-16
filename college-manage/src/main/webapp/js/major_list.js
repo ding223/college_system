@@ -31,7 +31,7 @@ function jinting(){
 
         } else if (layEvent === 'del') { //删除
             layer.confirm('真的删除行么', function (index) {
-                obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                // obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                 //向服务端发送删除指令
                 deleteEditMajorInfo(data.mid)
                 layer.close(index);
@@ -92,8 +92,27 @@ function toEditMajorInfo(majorId){
     alert("编辑专业id："+majorId);
 }
 //删除专业信息
-function deleteEditMajorInfo(majorId){
-    alert("删除专业id："+majorId);
+function deleteEditMajorInfo(mid){
+    // alert("删除专业id："+majorId);
+   var  $ = layui.jquery;
+    $.ajax({
+        url: "major/delete",
+        type: "GET",
+        data: {mid:mid},
+        dataType: "json",
+        success:function (result) {
+            if(result.success==true) {
+                alert("删除成功");
+                location.href="major_list.html";
+            }else{
+                alert("删除失败")
+            }
+        },
+        fail:function () {
+            alert("删除失败, 请联系管理员。")
+        }
+
+    })
 }
 
 
