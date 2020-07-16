@@ -4,15 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <package name="com.college.common.pojo"></package>
-    </typeAliases>
+<package name="com.college.common.pojo"></package>
+        </typeAliases>
 
 
 
-    <!--分页插件配置-->
-    <plugins>
-        <plugin interceptor="com.github.pagehelper.PageHelper">
-        </plugin>
-    </plugins>
+        <!--分页插件配置-->
+<plugins>
+<plugin interceptor="com.github.pagehelper.PageHelper">
+</plugin>
+</plugins>
 
-</configuration>
+        </configuration>

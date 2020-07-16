@@ -62,7 +62,7 @@ public class MajorServiceImplTest {
 
     @Test
     public void delete(){
-        System.out.println(majorService.delete(1));
+        System.out.println(majorService.delete(76));
     }
 
     @Test
